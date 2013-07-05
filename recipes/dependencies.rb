@@ -23,8 +23,10 @@ include_recipe "build-essential"
 include_recipe "git"
 
 case node[:platform]
-when "debian","ubuntu"
+when "debian"
   include_recipe "yasm::package"
+when 'ubuntu'
+  include_recipe "yasm::source"
 else
   include_recipe "yasm::source"
 end
