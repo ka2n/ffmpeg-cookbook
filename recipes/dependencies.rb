@@ -40,6 +40,13 @@ node[:ffmpeg][:compile_flags].each do |flag|
     include_recipe "x264::source"
   when "--enable-libvpx"
     include_recipe "libvpx::source"
+  when "--enable-libfdk-aac"
+    ffmpeg_module "fdk-aac" do
+      source "http://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.3.tar.gz"
+      compile_flags [
+      ]
+      creates "/usr/local/lib/libfdk-aac.a"
+    end
   when "--enable-libmp3lame"
     ffmpeg_module "libmp3lame" do
       source "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz"
