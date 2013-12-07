@@ -66,6 +66,7 @@ action :install do
         ./configure #{new_resource.compile_flags.join(' ')}
         make
         make install
+        ldconfig
       EOH
       not_if {!new_resource.creates.nil? && ::File.exist?(new_resource.creates)}
       notifies :create, "ruby_block[notify_updated_#{new_resource.name}]", :immediately
